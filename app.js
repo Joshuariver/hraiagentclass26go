@@ -3,6 +3,13 @@
  */
 
 document.addEventListener("DOMContentLoaded", () => {
+    if (window.marked) {
+        marked.setOptions({
+            gfm: true,
+            breaks: true
+        });
+    }
+
     App.init();
 });
 
@@ -94,7 +101,7 @@ const App = {
             .map((r) => `<li>${this.escapeHtml(r)}</li>`).join("");
 
         const detailMarkdownHtml = stage.detailMarkdown
-            ? `<div class="stage-detail-markdown">${marked.parse(stage.detailMarkdown)}</div>`
+            ? `<div class="stage-detail-markdown">${this.renderMarkdown(stage.detailMarkdown)}</div>`
             : "";
 
         const metaGrid = (stage.activities || stage.deliverables) ? `
@@ -328,7 +335,7 @@ const App = {
 
         container.innerHTML = `
             <article class="markdown-body">
-                ${marked.parse(content)}
+                ${this.renderMarkdown(content)}
             </article>
         `;
 
@@ -339,6 +346,15 @@ const App = {
         if (window.lucide) {
             lucide.createIcons();
         }
+    },
+
+    renderMarkdown(markdown) {
+        if (!window.marked) {
+            return this.escapeHtml(markdown);
+        }
+
+        const rendered = marked.parse(markdown);
+        return window.DOMPurify ? DOMPurify.sanitize(rendered) : this.escapeHtml(rendered);
     },
 
     escapeHtml(value) {
