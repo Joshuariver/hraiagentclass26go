@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HR AI Agent Dev Process</title>
+    <!-- Fonts: Pretendard -->
+    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css" />
+    <!-- Icons: Lucide -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- Markdown: Marked.js -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header id="gnb">
+        <nav class="nav-container">
+            <div class="logo">
+                <i data-lucide="bot"></i>
+                <span>HR AI Agent Dev</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#/process" class="active">Dev Process</a></li>
+                <li><a href="#/workflow">Agentic Workflow</a></li>
+                <li><a href="#/reasoning">Reasoning</a></li>
+                <li><a href="#/harness">Harness</a></li>
+                <li><a href="#/environment">Environment</a></li>
+                <li><a href="#/examples">Examples</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main id="content-root">
+        <!-- JS에 의해 동적으로 렌더링됩니다. -->
+        <div class="loader">Loading...</div>
+    </main>
+
+    <!-- Modal Overlay -->
+    <div id="modal-overlay" class="modal-overlay">
+        <div class="modal-content">
+            <div class="modal-close" id="modal-close">
+                <i data-lucide="x"></i>
+            </div>
+            <div id="modal-body" class="modal-body">
+                <!-- Skill details will be injected here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- App Scripts -->
+    <script src="data.js"></script>
+    <script src="app.js"></script>
+    <script>
+        // Lucide 아이콘 초기화
+        lucide.createIcons();
+    </script>
+</body>
+</html>
